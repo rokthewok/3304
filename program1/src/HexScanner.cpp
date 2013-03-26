@@ -9,18 +9,23 @@ HexScanner::HexScanner( std::istream * in )
 }
 
 Token * HexScanner::getNextToken() {
-	char nextChar = m_in->get();
-	if( !m_in->good() ) {
-		return nullptr;
-	}
 
-	if( this->isHexDigit( nextChar ) ) {
-		unsigned int digit = this->parseDigit( nextChar );
-		return new DigitToken( digit );
-	} else if( this->isOperator( nextChar ) ) {
-		return new OperatorToken( nextChar );
-	} else {
-		return new InvalidToken( nextChar );
+	while( true ) {
+		char nextChar = m_in->get();
+		if( !m_in->good() ) {
+			return nullptr;
+		}
+
+		if( this->isHexDigit( nextChar ) ) {
+			unsigned int digit = this->parseDigit( nextChar );
+			return new DigitToken( digit );
+		} else if( this->isOperator( nextChar ) ) {
+			return new OperatorToken( nextChar );
+		} else if( nextChar == '\n' ) {
+			// do nothing
+		} else {
+			return new InvalidToken( nextChar );
+		}
 	}
 }
 

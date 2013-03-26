@@ -6,6 +6,13 @@ class Token {
 		enum class TokenType : unsigned char {
 			DIGIT,
 			OPERATOR,
+			AND,
+			OR,
+			XOR,
+			NOT,
+			SHIFT_LEFT,
+			SHIFT_RIGHT,
+			NEWLINE,
 			INVALID
 		};
 		explicit Token( TokenType type );

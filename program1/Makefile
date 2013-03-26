@@ -8,8 +8,8 @@ incl = include/
 src = src/
 bin = bin/
 
-obj = HexScanner.o DigitToken.o OperatorToken.o InvalidToken.o Token.o
-binobj = $(bin)HexScanner.o $(bin)DigitToken.o $(bin)OperatorToken.o $(bin)main.o $(bin)Token.o $(bin)InvalidToken.o
+obj = HexScanner.o DigitToken.o OperatorToken.o InvalidToken.o Token.o NewlineToken.o
+binobj = $(bin)HexScanner.o $(bin)DigitToken.o $(bin)OperatorToken.o $(bin)main.o $(bin)Token.o $(bin)InvalidToken.o $(bin)NewlineToken.o
 
 project_one : main.o $(obj)
 	g++ -o project_one $(binobj)
@@ -23,6 +23,8 @@ OperatorToken.o : OperatorToken.h OperatorToken.cpp Token.h Token.o
 	g++ $(CFLAGS) -c $(src)OperatorToken.cpp -o $(bin)OperatorToken.o
 InvalidToken.o : InvalidToken.h InvalidToken.cpp Token.h Token.o
 	g++ $(CFLAGS) -c $(src)InvalidToken.cpp -o $(bin)InvalidToken.o
+NewlineToken.o : NewlineToken.h NewlineToken.cpp Token.h Token.o
+	g++ $(CFLAGS) -c $(src)NewlineToken.cpp -o $(bin)NewlineToken.o
 Token.o : Token.h Token.cpp
 	g++ $(CFLAGS) -c $(src)Token.cpp -o $(bin)Token.o
 clean :
