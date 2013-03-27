@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <sstream>
 #include "Token.h"
@@ -7,9 +8,12 @@
 
 int main( int argv, char ** argc ) {
 	std::ifstream in;
-	in.open( argc[1] );
-
-	std::stringstream stream( "~(e^7)" );
+	if( argv < 2 ) {
+		std::cout << "Please supply the appropriate command line arguments!" << std::endl;
+		return -1;
+	} else {
+		in.open( argc[1] );
+	}
 	
 	HexScanner scanner( &in );
 	HexParser parser( &scanner );
@@ -18,8 +22,10 @@ int main( int argv, char ** argc ) {
 	while( true ) {
 		result = parser.parse();
 		if( result != -1 ) {
-			std::cout << parser.getLastLine() << " = ";
-			std::cout << std::hex << result << std::endl;
+			std::cout << std::setw(25) << std::setiosflags( std::ios::left ) << parser.getLastLine();
+			std::cout << std::resetiosflags( std::ios::left );
+			std::cout << std::setw(5) << std::setiosflags( std::ios::right ) << " = " << std::hex << result << std::endl;
+			std::cout << std::resetiosflags( std::ios::right );
 		} else {
 			break;
 		}
