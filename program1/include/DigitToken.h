@@ -5,7 +5,7 @@
 class DigitToken : public Token {
 	public:
 		DigitToken();
-		explicit DigitToken( unsigned int value );
+		DigitToken( unsigned int value, std::string str );
 		const unsigned int getValue() const;
 		void setValue( unsigned int value );
 	private:

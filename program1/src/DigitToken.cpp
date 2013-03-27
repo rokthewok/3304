@@ -1,12 +1,12 @@
 #include "DigitToken.h"
 
 DigitToken::DigitToken()
-	: DigitToken::DigitToken( 0 ) {
+	: DigitToken::DigitToken( 0, "0" ) {
 
 }
 
-DigitToken::DigitToken( unsigned int value )
-	: Token::Token( Token::TokenType::DIGIT ),
+DigitToken::DigitToken( unsigned int value, std::string str )
+	: Token::Token( Token::TokenType::DIGIT, str ),
 	  m_value( value ) {
 
 }

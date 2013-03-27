@@ -1,13 +1,13 @@
 #include "InvalidToken.h"
 
 InvalidToken::InvalidToken()
-	: InvalidToken::InvalidToken( ' ' ) {
+	: InvalidToken::InvalidToken( " " ) {
 
 }
 
-InvalidToken::InvalidToken( char token )
-	: Token::Token( Token::TokenType::INVALID ),
-	  m_token( token ) {
+InvalidToken::InvalidToken( std::string token )
+	: Token::Token( Token::TokenType::INVALID, token ),
+	  m_token( ' ' ) {
 
 }
 

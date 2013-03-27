@@ -1,31 +1,55 @@
+#include <string>
+#include <sstream>
 #include "HexScanner.h"
 #include "DigitToken.h"
-#include "OperatorToken.h"
 #include "InvalidToken.h"
+#include "NewlineToken.h"
+#include "OrToken.h"
+#include "XorToken.h"
+#include "AndToken.h"
+#include "NotToken.h"
+#include "ShiftLeftToken.h"
+#include "ShiftRightToken.h"
+#include "LeftParenToken.h"
+#include "RightParenToken.h"
+#include "EmptyToken.h"
 
 HexScanner::HexScanner( std::istream * in )
 	: m_in( in ) {
 
 }
 
+bool HexScanner::isEndOfStream() {
+	if( m_in->eof() ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 Token * HexScanner::getNextToken() {
+	char nextChar = m_in->get();
+	if( !m_in->good() ) {
+		return new EmptyToken();
+	}
 
-	while( true ) {
-		char nextChar = m_in->get();
-		if( !m_in->good() ) {
-			return nullptr;
-		}
-
-		if( this->isHexDigit( nextChar ) ) {
-			unsigned int digit = this->parseDigit( nextChar );
-			return new DigitToken( digit );
-		} else if( this->isOperator( nextChar ) ) {
-			return new OperatorToken( nextChar );
-		} else if( nextChar == '\n' ) {
-			// do nothing
-		} else {
-			return new InvalidToken( nextChar );
-		}
+	if( this->isHexDigit( nextChar ) ) {
+		std::stringstream ss;
+		std::string s;
+		ss << nextChar;
+		ss >> s;
+		unsigned int digit = this->parseDigit( nextChar );
+		return new DigitToken( digit, s );
+	} else if( this->isOperator( nextChar ) ) {
+		return this->createOperatorToken( nextChar );
+	} else if( nextChar == '\n' ) {
+		return new NewlineToken();
+	} else {
+		std::stringstream ss;
+		std::string s;
+		ss << nextChar;
+		ss >> s;
+		return new InvalidToken( s );
 	}
 }
 
@@ -57,5 +81,33 @@ unsigned int HexScanner::parseDigit( char c ) {
 		return 0xF;
 	default:
 		return c - '0';
+	};
+}
+
+Token * HexScanner::createOperatorToken( char c ) {
+	switch( c ) {
+	case '|':
+		return new OrToken();
+	case '^':
+		return new XorToken();
+	case '&':
+		return new AndToken();
+	case '<':
+		return new ShiftLeftToken();
+	case '>':
+		return new ShiftRightToken();
+	case '~':
+		return new NotToken();
+	case '(':
+		return new LeftParenToken();
+	case ')':
+		return new RightParenToken();
+	default:
+		std::stringstream ss;
+		std::string s;
+		ss << c;
+		ss >> s;
+		return new InvalidToken( s );
+		break;
 	};
 }

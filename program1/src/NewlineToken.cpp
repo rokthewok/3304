@@ -1,6 +1,6 @@
 #include "NewlineToken.h"
 
 NewlineToken::NewlineToken()
-	: Token::Token( Token::TokenType::NEWLINE ) {
+	: Token::Token( Token::TokenType::NEWLINE, "\n" ) {
 
 }
