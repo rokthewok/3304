@@ -4,7 +4,7 @@ VPATH = bin:include:src
 
 GXX = g++
 
-CFLAGS = -Wall -g -static-libgcc -static-libstdc++ -Iinclude -std=c++11 -Wl,--as-needed -Wl,-Bstatic -lstdc++
+CFLAGS = -v -Wall -g -static-libgcc -static-libstdc++ -Iinclude -std=c++11
 
 incl = include/
 src = src/
@@ -17,7 +17,7 @@ binobj = $(bin)HexScanner.o $(bin)DigitToken.o $(bin)main.o $(bin)Token.o $(bin)
 		 $(bin)RightParenToken.o $(bin)EmptyToken.o
 
 project_one : main.o $(obj)
-	$(GXX) -o project_one $(binobj)
+	$(GXX) $(CFLAGS) -o project_one $(binobj)
 main.o : $(obj)
 	$(GXX) $(CFLAGS) -c $(src)main.cpp -o $(bin)main.o
 HexParser.o : HexParser.h HexParser.cpp HexScanner.h HexScanner.o Token.h Token.o DigitToken.h DigitToken.o
