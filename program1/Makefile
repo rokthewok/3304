@@ -4,7 +4,7 @@ VPATH = bin:include:src
 
 GXX = g++
 
-CFLAGS = -v -Wall -g -static-libgcc -static-libstdc++ -Iinclude -std=c++11
+CFLAGS = -Wall -g -static-libgcc -static-libstdc++ -Iinclude -std=c++11
 
 incl = include/
 src = src/
