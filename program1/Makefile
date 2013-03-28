@@ -2,7 +2,9 @@
 
 VPATH = bin:include:src
 
-CFLAGS = -g -static-libstdc++ -Iinclude -std=c++11 
+GXX = g++
+
+CFLAGS = -Wall -g -static-libgcc -static-libstdc++ -Iinclude -std=c++11 -Wl,--as-needed -Wl,-Bstatic -lstdc++
 
 incl = include/
 src = src/
@@ -15,38 +17,38 @@ binobj = $(bin)HexScanner.o $(bin)DigitToken.o $(bin)main.o $(bin)Token.o $(bin)
 		 $(bin)RightParenToken.o $(bin)EmptyToken.o
 
 project_one : main.o $(obj)
-	g++ -o project_one $(binobj)
+	$(GXX) -o project_one $(binobj)
 main.o : $(obj)
-	g++ $(CFLAGS) -c $(src)main.cpp -o $(bin)main.o
+	$(GXX) $(CFLAGS) -c $(src)main.cpp -o $(bin)main.o
 HexParser.o : HexParser.h HexParser.cpp HexScanner.h HexScanner.o Token.h Token.o DigitToken.h DigitToken.o
-	g++ $(CFLAGS) -c $(src)HexParser.cpp -o $(bin)HexParser.o
+	$(GXX) $(CFLAGS) -c $(src)HexParser.cpp -o $(bin)HexParser.o
 HexScanner.o : HexScanner.h HexScanner.cpp Token.h DigitToken.h DigitToken.o
-	g++ $(CFLAGS) -c $(src)HexScanner.cpp -o $(bin)HexScanner.o
+	$(GXX) $(CFLAGS) -c $(src)HexScanner.cpp -o $(bin)HexScanner.o
 DigitToken.o : DigitToken.h DigitToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)DigitToken.cpp -o $(bin)DigitToken.o
+	$(GXX) $(CFLAGS) -c $(src)DigitToken.cpp -o $(bin)DigitToken.o
 InvalidToken.o : InvalidToken.h InvalidToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)InvalidToken.cpp -o $(bin)InvalidToken.o
+	$(GXX) $(CFLAGS) -c $(src)InvalidToken.cpp -o $(bin)InvalidToken.o
 NewlineToken.o : NewlineToken.h NewlineToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)NewlineToken.cpp -o $(bin)NewlineToken.o
+	$(GXX) $(CFLAGS) -c $(src)NewlineToken.cpp -o $(bin)NewlineToken.o
 OrToken.o : OrToken.h OrToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)OrToken.cpp -o $(bin)OrToken.o
+	$(GXX) $(CFLAGS) -c $(src)OrToken.cpp -o $(bin)OrToken.o
 AndToken.o : AndToken.h AndToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)AndToken.cpp -o $(bin)AndToken.o
+	$(GXX) $(CFLAGS) -c $(src)AndToken.cpp -o $(bin)AndToken.o
 XorToken.o : XorToken.h XorToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)XorToken.cpp -o $(bin)XorToken.o
+	$(GXX) $(CFLAGS) -c $(src)XorToken.cpp -o $(bin)XorToken.o
 NotToken.o : NotToken.h NotToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)NotToken.cpp -o $(bin)NotToken.o
+	$(GXX) $(CFLAGS) -c $(src)NotToken.cpp -o $(bin)NotToken.o
 ShiftLeftToken.o : ShiftLeftToken.h ShiftLeftToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)ShiftLeftToken.cpp -o $(bin)ShiftLeftToken.o
+	$(GXX) $(CFLAGS) -c $(src)ShiftLeftToken.cpp -o $(bin)ShiftLeftToken.o
 ShiftRightToken.o : ShiftRightToken.h ShiftRightToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)ShiftRightToken.cpp -o $(bin)ShiftRightToken.o
+	$(GXX) $(CFLAGS) -c $(src)ShiftRightToken.cpp -o $(bin)ShiftRightToken.o
 LeftParenToken.o : LeftParenToken.h LeftParenToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)LeftParenToken.cpp -o $(bin)LeftParenToken.o
+	$(GXX) $(CFLAGS) -c $(src)LeftParenToken.cpp -o $(bin)LeftParenToken.o
 RightParenToken.o : RightParenToken.h RightParenToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)RightParenToken.cpp -o $(bin)RightParenToken.o
+	$(GXX) $(CFLAGS) -c $(src)RightParenToken.cpp -o $(bin)RightParenToken.o
 EmptyToken.o : EmptyToken.h EmptyToken.cpp Token.h Token.o
-	g++ $(CFLAGS) -c $(src)EmptyToken.cpp -o $(bin)EmptyToken.o
+	$(GXX) $(CFLAGS) -c $(src)EmptyToken.cpp -o $(bin)EmptyToken.o
 Token.o : Token.h Token.cpp
-	g++ $(CFLAGS) -c $(src)Token.cpp -o $(bin)Token.o
+	$(GXX) $(CFLAGS) -c $(src)Token.cpp -o $(bin)Token.o
 clean :
 	rm -f bin/* project_one

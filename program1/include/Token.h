@@ -20,6 +20,7 @@ class Token {
 			INVALID
 		};
 		Token( TokenType type, std::string str );
+		virtual ~Token();
 		virtual TokenType getTokenType() const;
 		virtual std::string toString() const;
 	private:

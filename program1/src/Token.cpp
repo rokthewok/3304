@@ -6,6 +6,10 @@ Token::Token( TokenType type, std::string str )
 
 }
 
+Token::~Token() {
+
+}
+
 Token::TokenType Token::getTokenType() const {
 	return this->m_type;
 }
