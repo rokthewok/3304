@@ -98,11 +98,11 @@ unsigned int HexParser::C() {
 		break;
 	case Token::TokenType::SHIFT_LEFT:
 		this->grabNextToken();
-		return ( this->C() << 1 );
+		return ( this->C() << 1 ) & 0xF;
 		break;
 	case Token::TokenType::SHIFT_RIGHT:
 		this->grabNextToken();
-		return ( this->C() >> 1 );
+		return ( this->C() >> 1 ) & 0xF;
 		break;
 	case Token::TokenType::NOT:
 		this->grabNextToken();
