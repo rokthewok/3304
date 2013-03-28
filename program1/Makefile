@@ -2,7 +2,7 @@
 
 VPATH = bin:include:src
 
-CFLAGS = -g -Iinclude -std=c++11 -static
+CFLAGS = -g -static-libstdc++ -Iinclude -std=c++11 
 
 incl = include/
 src = src/
