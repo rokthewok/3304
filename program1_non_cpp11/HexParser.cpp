@@ -4,17 +4,13 @@
 
 HexParser::HexParser( HexScanner * scanner )
 	: m_scanner( scanner ),
-	  m_token( NULL ),
-	  m_stringResult( "" ) {
+	  m_token( NULL ) {
 
 }
 
 void HexParser::grabNextToken() {
 	delete m_token;
 	m_token = m_scanner->getNextToken();
-	if( m_token->getTokenType() != Token::NEWLINE ) {
-		m_stringResult += m_token->toString();
-	}
 }
 
 unsigned int HexParser::E() {
@@ -116,15 +112,10 @@ unsigned int HexParser::C() {
 
 unsigned int HexParser::parse() {
 	m_token = m_scanner->getNextToken();
-	m_stringResult = m_token->toString();
 
 	if( m_scanner->isEndOfStream() && m_token->getTokenType() != Token::DIGIT ) {
 		return -1;
 	}
 
 	return this->E();
-}
-
-std::string HexParser::getLastLine() {
-	return m_stringResult;
 }

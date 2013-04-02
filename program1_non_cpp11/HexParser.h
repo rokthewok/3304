@@ -8,7 +8,6 @@ class HexParser {
 	public:
 		HexParser( HexScanner * scanner );
 		virtual unsigned int parse();
-		std::string getLastLine();
 	private:
 		unsigned int E();
 		unsigned int EE( unsigned int subtotal );
@@ -21,7 +20,6 @@ class HexParser {
 
 		HexScanner * m_scanner;
 		Token * m_token;
-		std::string m_stringResult;
 };
 
 #endif // HEX_PARSER_H
