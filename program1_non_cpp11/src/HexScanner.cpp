@@ -1,5 +1,6 @@
 #include <string>
 #include <sstream>
+#include <iostream>
 #include "HexScanner.h"
 #include "DigitToken.h"
 #include "InvalidToken.h"
@@ -39,8 +40,10 @@ Token * HexScanner::getNextToken() {
 		ss << nextChar;
 		ss >> s;
 		unsigned int digit = this->parseDigit( nextChar );
+		std::cout << nextChar;
 		return new DigitToken( digit, s );
 	} else if( this->isOperator( nextChar ) ) {
+		std::cout << nextChar;
 		return this->createOperatorToken( nextChar );
 	} else if( nextChar == '\n' ) {
 		return new NewlineToken();
