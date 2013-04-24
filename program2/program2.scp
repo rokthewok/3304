@@ -3,14 +3,18 @@
 		((null? (car path)) (append '(not found:) (list dest)))
 		((= dest (car path)) (append '(found:) (list dest)))
 		((< dest (car path))
+			(cond ((eq? 'not (car (navigate dest (car (cdr path))))) (navigate dest (car (cdr path))))
+				(else 
 			(append (append (list (car (navigate dest (car (cdr path)))))
 					(list (car path) 'R) 
-					(cdr (navigate dest (car (cdr path)))))))
+					(cdr (navigate dest (car (cdr path)))))))))
 		((> dest (car path))
+			(cond ((eq? 'not (car (navigate dest (car (cdr (cdr path)))))) (navigate dest (car (cdr (cdr path)))))
+				(else
 			(append (append (list (car (navigate dest (car (cdr (cdr path))))))
 				(list (car path) 'L)
-				(cdr (navigate dest (car (cdr (cdr path))))))))
-		)))
+				(cdr (navigate dest (car (cdr (cdr path)))))))))
+		))))
 
 (define pathConcat (lambda (func1 func2 list1)
 	(cond ((eq 'not (car func1)) func1)
