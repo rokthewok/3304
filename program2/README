@@ -1,0 +1,8 @@
+John Ruffer
+905619804
+
+Invoke the Scheme program using IO redirection:
+
+mzscheme < program2.scp > output.txt
+
+output.txt will hold the output of the program.
