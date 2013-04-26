@@ -1,14 +1,13 @@
-GNU Prolog 1.4.3 (32 bits)
-Compiled Apr  1 2013, 19:15:24 with gcc
-By Daniel Diaz
-Copyright (C) 1999-2012 Daniel Diaz
-| ?- compiling /home/john/workspace/3304/program3/program3.pl for byte code...
-/home/john/workspace/3304/program3/program3.pl compiled, 43 lines read - 7353 bytes written, 6 ms
+Welcome to SWI-Prolog (Multi-threaded, 32 bits, Version 6.0.2)
+Copyright (c) 1990-2011 University of Amsterdam, VU Amsterdam
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software,
+and you are welcome to redistribute it under certain conditions.
+Please visit http://www.swi-prolog.org for details.
 
-(2 ms) yes
-| ?- 
+For help, use ?- help(Topic). or ?- apropos(Word).
 
-Greataunt = dianna
+% program3 compiled 0.00 sec, 44 clauses
+true.
 
-yes
-| ?- 
+Greataunt = dianna.
+
