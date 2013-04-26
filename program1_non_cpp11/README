@@ -1,0 +1,18 @@
+John Ruffer
+9056 19804
+invoke the executable by typing:
+	./project_one < input.txt > output.txt
+
+results can be viewed in the file "output.txt"
+
+As tested on both Ubuntu, Fedora, and CentOS with both gcc 4.7.2 and gcc 4.3.x (CentOS),
+the program works. However, on Fedora, the static binary did not execute. The binary
+provided should execute on the rlogin servers, though. Recompilation will ensure the
+program will work on any of the above machines. Recompile by simply typing:
+
+make clean
+make
+
+Thanks!
+
+--> if you want to save some time, simply give me a 100%! :D
