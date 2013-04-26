@@ -2,3 +2,9 @@ John Ruffer
 905619804
 
 program 3: Genealogy through Prolog.
+
+invoke using:
+
+swipl < input.txt 2> output.txt
+
+This will redirect stderr into output.txt. Swipl may have a specific path you need to resolve.
