@@ -1,0 +1,4 @@
+consult(program3).
+aunt(florence, harry).
+
+halt.
