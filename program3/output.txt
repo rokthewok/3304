@@ -1,0 +1,14 @@
+GNU Prolog 1.4.3 (32 bits)
+Compiled Apr  1 2013, 19:15:24 with gcc
+By Daniel Diaz
+Copyright (C) 1999-2012 Daniel Diaz
+| ?- compiling /home/john/workspace/3304/program3/program3.pl for byte code...
+/home/john/workspace/3304/program3/program3.pl compiled, 43 lines read - 7353 bytes written, 6 ms
+
+(2 ms) yes
+| ?- 
+
+Greataunt = dianna
+
+yes
+| ?- 

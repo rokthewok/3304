@@ -1,4 +1,3 @@
 consult(program3).
-aunt(florence, harry).
-
+greataunt(Greataunt, harry), !.
 halt.
